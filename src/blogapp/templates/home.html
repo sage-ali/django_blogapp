@@ -31,7 +31,7 @@
                                 <h3>
                                     <a href="#">{{ post.title|title }}</a>
                                 </h3>
-                                <a href="#">Read More</a>
+                                <a href={% url 'post_details' post.pk %}>Read More</a>
                             </div>
                         </div>
                     </div>
