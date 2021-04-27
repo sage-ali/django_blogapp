@@ -3,7 +3,8 @@
 {% block content %}
 <div class="container ">
     <div class="row justify-content-center pt-150 pb-120">
-        <div class="col-xxl-6 col-xl-7 col-lg-8">
+        <div class="col-xxl-8 col-xl-9 col-lg-10 position-relative">
+            <a href={% url 'edit_post' post.pk%} class="btn btn-primary btn-lg active position-absolute top-0 end-0" style="margin-right: -20;">Edit post</a>
             <div class="single-blog blog-left">
                 <div class="image">
                     <a href="#">
