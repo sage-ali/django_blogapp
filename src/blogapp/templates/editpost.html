@@ -9,6 +9,7 @@
         <!-- b -->
         {{ form.as_p }}
         <input type="submit" value="Update">
+        <a href={% url 'delete_post' post.pk %} class="btn btn-primary btn-lg active">Delete post</a>
     </form>
 
 

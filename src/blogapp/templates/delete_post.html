@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+<!-- ========================= blog-section start ========================= -->
+{% block content %}
+
+<!-- ========================= deletepost-section start ========================= -->
+<section id="newpost" class="blog-section pt-150 pb-120">
+    <form method="post">{% csrf_token %}
+        <p>Are you sure you want to delete this post?</p>
+        <input type="submit" value="Confirm">
+    </form>
+
+</section>
+<!-- ========================= deletepost-section end ========================= -->
+
+
+{% endblock %}
