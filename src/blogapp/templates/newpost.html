@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+<!-- ========================= blog-section start ========================= -->
+{% block content %}
+
+<!-- ========================= newpost-section start ========================= -->
+<section id="newpost" class="blog-section pt-150 pb-120">
+    <form method="post">
+        {% csrf_token %}
+        <!-- b -->
+        {{ form.as_p }}
+        <input type="submit" value="Save">
+    </form>
+
+
+</section>
+<!-- ========================= newpost-section end ========================= -->
+
+
+{% endblock %}
