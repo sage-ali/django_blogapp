@@ -69,19 +69,16 @@ class BlogDetailView(DetailView):
     template_name = 'post_detail.html'
     
 class BlogCreateView(CreateView):
-    login_required = True
     model = Post
     template_name = 'newpost.html'
     fields = ['title', 'author', 'body']
     
 class BlogUpdateView(UpdateView):
-    login_required = True
     model = Post
     template_name = 'editpost.html'
     fields = ['title', 'body']
     
 class BlogDeleteView(DeleteView):
-    login_required = True
     model = Post
     template_name = 'delete_post.html'
     success_url = reverse_lazy('blogapp-home')
