@@ -36,17 +36,19 @@
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul id="nav" class="navbar-nav ms-auto">
                                     <li class="nav-item">
-                                        <a class="page-scroll active" href={% url 'blogapp-home' %}>Home</a>
+                                        <a class="page-scroll active" href="{% url 'blogapp-home' %}">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="page-scroll" href="#about">About Us</a>
+                                        <a class="page-scroll" href="{% url 'admin:index' %}">Admin</a></li>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="page-scroll" href="#blog">Blog</a>
+                                        <a class="page-scroll" href="{% url 'register' %}">Register</a></li>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="" href="#0">Contact</a>
-                                    </li>
+                                    {# Some logic on what to display for last item#} {% if user.is_authenticated %}
+                                    <li class="nav-item"><a class="page-scroll" href="{% url 'logout' %}">Logout</a></li>
+                                    {% else %}
+                                    <li class="nav-item"><a class="page-scroll" class="navbar-link" href="{% url 'login' %}">Login</a></li>
+                                    {% endif %}
                                 </ul>
                             </div>
                             <!-- navbar collapse -->
