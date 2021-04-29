@@ -7,13 +7,13 @@ from django.contrib.auth.decorators import login_required
 
 from django.contrib import messages
 
-from .models import Post
+from .models import Post, Comment
 
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
-from .forms import CreateUserForm
+from .forms import CreateUserForm, CommentForm
 
 
 from django.core.mail import send_mail, BadHeaderError
@@ -108,6 +108,23 @@ class BlogListView(ListView):
     model = Post
     template_name = 'home.html'
     
+
+def blog_details(request, pk):
+    post = Post.objects.get(pk=pk)
+    comments = Comment.objects.filter(post=post).order_by('last_modified')
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            
+            add_comment = request.POST.get('comment101', None)
+            if add_comment is not None:
+                comment = Comment(author=request.user, body=add_comment, post=post)
+                comment.save()
+                comments = Comment.objects.filter(post=post).order_by('last_modified')
+                context = {'post': post, 'comments': comments}
+                return render(request, 'post_detail.html', context)
+    context ={'post': post, 'comments': comments,}
+    return render(request, 'post_detail.html', context)
+
 class BlogDetailView(DetailView):
     model = Post
     template_name = 'post_detail.html'
