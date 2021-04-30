@@ -23,6 +23,25 @@
                         <p>&nbsp;&nbsp;&nbsp;&nbsp; {{ post.body }} </p>
                     </div>
                 </div>
+
+                <br>
+                <br>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <textarea name="comment101">
+                    </textarea></br>
+                    <input type="submit" name="comment" value="Add comment" />
+                </form>
+
+                {% for message in messages %}
+                <p id="messages">{{message}}</p>
+                {% endfor %}
+                <div>
+                    {%for comment in comments%}
+                    <hr>
+                    <p>{{comment.body}}</p>
+                    <pre>– {{comment.author}} {{comment.last_modified}}</pre> {% endfor %}
+                </div>
             </div>
 
 
